@@ -1,14 +1,14 @@
-# Folosim o imagine de bază C++
+# Utilizăm o imagine de bază GCC
 FROM gcc:latest
 
-# Setăm directorul de lucru
-WORKDIR /app
+# Setăm directorul de lucru în interiorul containerului
+WORKDIR /usr/src/app
 
-# Copiem codul sursă în container
-COPY . .
+# Copiem fișierul sursă în directorul curent al containerului
+COPY queens.cpp .
 
-# Compilăm programul
-RUN g++ -o queens queens.cpp
+# Compilăm codul sursă
+RUN g++ -o queens_app queens.cpp
 
-# Comandă implicită care va fi executată la rularea containerului
-CMD ["./queens"]
+# Comanda care rulează proiectul când containerul este pornit
+CMD ["./queens_app"]
